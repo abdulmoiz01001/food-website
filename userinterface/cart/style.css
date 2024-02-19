@@ -1,0 +1,212 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.cart-page{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 50px 0px;
+}
+
+.container{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cart-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.cart-content h1{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.cart-items{
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.total-price{
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.total-price h3{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.total-price span{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.total-price button{
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #f1356d;
+    color: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.total-price button:hover{
+    background-color: #f1356d;
+    transform: scale(1.1);
+}
+
+.total-price button:active{
+    transform: scale(1);
+}
+
+/* cart styling */
+
+.cart-item{
+    width: 45%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin: 1rem;
+}
+
+.cart-item img{
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.cart-item div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.cart-item div h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1rem;
+}
+
+.cart-item div p{
+    font-size: 1rem;
+    margin: 1rem;
+}
+
+.cart-item div button{
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #f1356d;
+    color: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.cart-item div button:hover{
+    background-color: #f1356d;
+    transform: scale(1.1);
+}
+
+.cart-item div button:active{
+    transform: scale(1);
+}
+
+.inc-dec-btns{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.inc-dec-btns button{
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #f1356d;
+    color: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.inc-dec-btns button:hover{
+    background-color: #f1356d;
+    transform: scale(1.1);
+}
+
+.inc-dec-btns button:active{
+    transform: scale(1);
+}
+
+.inc-dec-btns > p{
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: default;
+    margin: 1rem;
+    border: 2px solid #f1356d;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+}

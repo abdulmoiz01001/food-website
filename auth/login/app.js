@@ -11,8 +11,10 @@ async function loginAccount(){
         await firebase.database().ref("users").child(userId).get()
         .then((snap)=>{
             console.log(snap.val());
+            localStorage.setItem("current-userId",userId);
             if(snap.val() != undefined && snap.val().userType == "user"){
-                console.log("User");
+                // console.log("User");
+                window.location.href = "../../userinterface/index.html";
             }
             else if(snap.val() != undefined && snap.val().userType == "admin"){
                 window.location.href = "../../dashboard/admin/index.html";
