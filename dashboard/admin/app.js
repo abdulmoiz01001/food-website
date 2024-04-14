@@ -131,20 +131,28 @@ async function addItem(){
 
 function loadCategories(){
 
-    sideBarContent.innerHTML = `
-    <li class="active">Food Dishes</li>`;
+    // sideBarContent.innerHTML = `
+    // <li class="active">Food Dishes</li>`;
             sideBarContent.innerHTML = `
     <li class="active" >Food Categories</li>`;
+    sideBarContent.innerHTML += `
+    <li onclick="navigateToOrdersPage()"  >Food Orders</li>`;
         categoryRef.on('value', function(snapshot){
             let categories = snapshot.val();
+            console.log(categories);
             let categoryList = [];
             for(let category in categories){
                 categoryList.push({id: category, name: categories[category].categoryName, image: categories[category].categoryImage});
             }
+            console.log(categoryList);
             displayCategories(categoryList);
         })
   
 
+}
+
+function navigateToOrdersPage(){
+    window.location.href = '/dashboard/admin/orders/index.html';
 }
 
 loadCategories();
@@ -152,6 +160,7 @@ loadCategories();
 function displayCategories(categories){
     
     let categoryList = categories.map((category) => {
+        console.log(category);
         return `
         <div   class="category-row">
 

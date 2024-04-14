@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.place-order-main-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.place-order-box{
+    display: flex;
+    /* flex-direction: column; */
+
+    width: 90%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+.order-image{
+    width: 50%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.order-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.order-details{
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.order-details h1{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.order-details p{
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.set-quantity{
+    /* border: 2px solid red; */
+    width: 50%;
+    /* gap: 20px; */
+    justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.set-quantity input{
+    width: 50px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.set-quantity button{
+    padding: 10px 20px;
+    background-color: #f1356d;
+    border: none;
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.last-decision-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.last-decision-btns button{
+    padding: 10px 20px;
+    background-color: #f1356d;
+    border: none;
+    color: #fff;
+    font-size: large;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.last-decision-btns button:hover{
+    background-color: #f1356d;
+    transform: scale(1.1);
+}
+
+.last-decision-btns button:active{
+    transform: scale(1);
+}

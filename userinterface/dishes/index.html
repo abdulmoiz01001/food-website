@@ -9,18 +9,19 @@
 <body>
      <!-- create a page to show dishes cards  -->
     <div class="dishes-page">
-        <header>
-                <div class="nav-bar">
-                    <a href="../index.html">Home</a>
-                    <a href="../categorypage/index.html">Categories</a>
-                    <a href="../cart/index.html">Cart</a>
-                    <a href="../orderpage/index.html">Orders</a>
-                    <a id="login-id" href="../../auth/login/index.html">Login</a>
-                    <a id="signup-id" href="../auth/signup/index.html">Sign Up</a>
-                    <a id="logout-id" onclick="logoutAccount()">logout</a>
-                </div>
-       
-        </header>
+        <header onchange="displayMenu()" >
+            <div class="nav-bar" id="navbar-id">
+                <a href="../index.html">Home</a>
+                <a href="../categorypage/index.html">Categories</a>
+                <a href="../cart/index.html">Cart</a>
+                <a href="../orders/index.html">Orders</a>
+                <a id="login-id" href="../../auth/login/index.html">Login</a>
+                <a id="signup-id" href="../auth/signup/index.html">Sign Up</a>
+                <a id="logout-id" onclick="logoutAccount()">logout</a>
+            </div>
+            <p id="menu-id" onclick="toggleNavbar()" class="hidden menu-btn" href="">Menu</p>
+   
+    </header>
         <div class="container">
             <div class="dishes-content">
                 <h1>Food Dishes</h1>
@@ -30,6 +31,18 @@
             </div>
         </div>
     </div>
+    <!-- notification toast -->
+    <div id="notification-toast" class="notification-toast">
+        <p id="notification-toast-text">add to cart</p>    
+    </div>
+
+
+
+
+
+
+
+
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-database-compat.js"></script>

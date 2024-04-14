@@ -1,15 +1,17 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
+    overflow-x: hidden;
 }
 
-.cart-page{
+.cart-page {
+    overflow-x: hidden;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -17,69 +19,45 @@ body{
     align-items: center;
     min-height: 100vh;
     background-color: #f4f4f4;
-    padding: 50px 0px;
+    padding-bottom: 50px;
 }
 
-.container{
-    width: 80%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.cart-content{
+header {
     width: 100%;
-    height: 100%;
+    min-height: 10vh;
+    position: sticky;
+    top: 0;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    padding: 0 10%;
+    background-color: #333;
 
 }
 
-.cart-content h1{
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.cart-items{
-    margin-top: 50px;
+.nav-bar {
     width: 100%;
-    height: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
+
 }
 
+.nav-bar a {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #f1356d;
+    color: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 
-.total-price{
-    margin-top: 50px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
-.total-price h3{
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.total-price span{
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.total-price button{
+.menu-btn {
     padding: 1rem 2rem;
     font-size: 1.2rem;
     border: none;
@@ -92,18 +70,161 @@ body{
     transition: all 0.3s ease;
 }
 
-.total-price button:hover{
+@media (max-width: 800px) {
+    header {
+        height: 80px;
+        position: relative;
+    }
+
+    .nav-bar {
+        position: absolute;
+        top: 80px;
+        transform: translateX(200%);
+        width: 100%;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-direction: column;
+
+        align-items: center;
+
+        transition: 0.3s all ease-in-out;
+        background-color: #fff;
+    }
+
+    .nav-bar a {
+        padding: 1rem;
+        font-size: 1rem;
+        width: 9rem;
+        text-align: center;
+    }
+
+    .move-navbar {
+        transform: translateX(0%);
+        transition: 0.3s all ease-in-out;
+    }
+
+    .visible{
+        /* position: absolute;
+        top: 80px;
+        right: 0px; */
+        display: block;
+        z-index: 999;
+    }
+    .hidden{
+        /* position: absolute;
+        top: 80px;
+        right: 0px; */
+        display: block!important;
+        z-index: 999;
+    }
+
+}
+
+.menu-btn:hover {
     background-color: #f1356d;
     transform: scale(1.1);
 }
 
-.total-price button:active{
+.menu-btn:active {
+    transform: scale(1);
+}
+
+.nav-bar a:hover {
+    background-color: #f1356d;
+    transform: scale(1.1);
+}
+
+.nav-bar a:active {
+    transform: scale(1);
+}
+
+.container {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cart-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.cart-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.cart-items {
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.total-price {
+    margin-top: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.total-price h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.total-price span {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.total-price button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #f1356d;
+    color: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.total-price button:hover {
+    background-color: #f1356d;
+    transform: scale(1.1);
+}
+
+.total-price button:active {
     transform: scale(1);
 }
 
 /* cart styling */
 
-.cart-item{
+.cart-item {
     width: 45%;
     height: 500px;
     display: flex;
@@ -120,7 +241,7 @@ body{
     margin: 1rem;
 }
 
-.cart-item img{
+.cart-item img {
     width: 100%;
     height: 60%;
     object-fit: cover;
@@ -128,7 +249,7 @@ body{
     margin-bottom: 1rem;
 }
 
-.cart-item div{
+.cart-item div {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -136,18 +257,18 @@ body{
     height: 20%;
 }
 
-.cart-item div h3{
+.cart-item div h3 {
     font-size: 1.5rem;
     font-weight: 700;
     margin: 1rem;
 }
 
-.cart-item div p{
+.cart-item div p {
     font-size: 1rem;
     margin: 1rem;
 }
 
-.cart-item div button{
+.cart-item div button {
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     border: none;
@@ -160,16 +281,16 @@ body{
     transition: all 0.3s ease;
 }
 
-.cart-item div button:hover{
+.cart-item div button:hover {
     background-color: #f1356d;
     transform: scale(1.1);
 }
 
-.cart-item div button:active{
+.cart-item div button:active {
     transform: scale(1);
 }
 
-.inc-dec-btns{
+.inc-dec-btns {
     width: 100%;
     height: 20%;
     display: flex;
@@ -178,7 +299,7 @@ body{
     margin-top: 1rem;
 }
 
-.inc-dec-btns button{
+.inc-dec-btns button {
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     border: none;
@@ -191,16 +312,16 @@ body{
     transition: all 0.3s ease;
 }
 
-.inc-dec-btns button:hover{
+.inc-dec-btns button:hover {
     background-color: #f1356d;
     transform: scale(1.1);
 }
 
-.inc-dec-btns button:active{
+.inc-dec-btns button:active {
     transform: scale(1);
 }
 
-.inc-dec-btns > p{
+.inc-dec-btns>p {
     font-size: 1.5rem;
     font-weight: 700;
     cursor: default;
@@ -209,4 +330,8 @@ body{
     padding: 0.5rem 1rem;
     border-radius: 10px;
     background-color: #f4f4f4;
+}
+
+.hidden {
+    display: none;
 }

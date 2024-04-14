@@ -430,3 +430,145 @@ body{
     transform: scale(1);
     transition: transform 0.5s ease-in-out;
 }
+
+.order-card{
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: default;
+    text-decoration: none;
+}
+
+.order-card-header{
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: default;
+    color: #fff;
+}
+
+.order-card:hover{
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.order-card:active{
+    background-color: #777;
+}
+
+.order-card-header h3{
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: default;
+    color: #fff;
+}
+
+.order-card-header p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: default;
+    color: #fff;
+}
+
+.order-card-body{
+    width: 70%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-card-body p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: default;
+    color: #fff;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: default;
+    text-decoration: none;
+}
+
+.card-header{
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: default;
+    color: #fff;
+}
+
+.card-body{
+    width: 70%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: default;
+    color: #fff;
+}
+
+.card-text{
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: default;
+    color: #fff;
+}
+
+
+
+.card-footer{
+    width: 100%;
+    height: 50px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: default;
+    text-decoration: none;
+}
+
+.card-footer button{
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #333;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}

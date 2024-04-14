@@ -5,6 +5,8 @@ let dishName = document.getElementById('name');
 let dishPrice = document.getElementById('price');
 let imageSrcId = document.getElementById('image-src-id');
 
+let totalQuantity = document.getElementById('total-quantity');
+
 // dashboard side bar ul instance 
 let sideBarContent = document.getElementById('side-bar-content');
 // image url 
@@ -34,8 +36,19 @@ let dishContent = document.getElementById('main-content-id');
 // main data
 let mainData = [];
 
+// current user id
+
+let currentUserId = localStorage.getItem('current-userId');
+
+if(currentUserId == null){
+    
+    window.location.replace('/auth/login/index.html') ;
+    
+    }
+
 
 function addItemForm() {
+    dishImageUrl = '';
     itemFormId.classList.add('toggle-item-form');
 }
 
@@ -76,12 +89,20 @@ loadDishes();
 
 image.addEventListener('change', function (e) {
     // alert('image changed');
-    upoaldImage(e);
+    uploadImage(e);
 }
 )
 
 
-function upoaldImage(e) {
+async function logout(){
+    
+    localStorage.removeItem('current-userId');
+    await firebase.auth().signOut();
+   window.location.replace('/auth/login/index.html');
+}
+
+
+function uploadImage(e) {
     notificationToast.classList.add('show');
     var dishStorageRef = firebase.storage().ref();
     var dishUploadTask = dishStorageRef.child(`Dish/${e.target.files[0].name}`).put(e.target.files[0]);
@@ -110,7 +131,7 @@ function upoaldImage(e) {
 }
 
 async function addDish() {
-
+       
     if (editCheck) {
         await updateDish();
         return;
@@ -126,6 +147,7 @@ async function addDish() {
         dishName: dishName.value,
         dishPrice: dishPrice.value,
         dishImage: dishImage,
+        dishTotalQuantity: totalQuantity.value,
         dishId: key,
         categoryId: categoryId,
         categoryName:categoryName
@@ -134,6 +156,7 @@ async function addDish() {
         .then(function () {
             dishName.value = '';
             dishPrice.value = '';
+            totalQuantity.value = '';
             dishImage = '';
             loadDishes();
             closeForm();
@@ -169,7 +192,8 @@ function displayDishes(dishList) {
 
         <div id=${dishList[i].dishId} class="dish-item">
             <p>${dishList[i].dishName}</p>
-            <p>${dishList[i].dishPrice}</p>
+            <p>Rs-${dishList[i].dishPrice}</p>
+            <p>${dishList[i].dishTotalQuantity}</p>
             <img src="${dishList[i].dishImage}" alt="">
             <div class="dish-item-manipulation-btns">
             <button onclick="editDish(this)" >Edit</button>
