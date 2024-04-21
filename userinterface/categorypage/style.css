@@ -59,6 +59,14 @@ body{
 
 }
 
+@media (max-width: 400px){
+    .category-heading{
+        font-size: 8vw;
+        margin: 20px 0px;
+    }
+    
+}
+
 .category-heading::before{
     content: attr(data-text);
     position: absolute;

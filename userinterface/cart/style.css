@@ -139,9 +139,20 @@ header {
 }
 
 @media (max-width: 800px) {
+    .loader-heading {
+        font-size: 6vw;
+        top: 40%!important;
+        left: 35%!important;
+    }
+    .loader {
+        left: 45%!important;
+    }
     header {
         height: 80px;
         position: relative;
+    }
+    .cart-item {
+        width: 85%!important;
     }
 
     .nav-bar {
@@ -189,6 +200,28 @@ header {
         z-index: 999;
     }
 
+}
+
+@media (max-width: 400px) {
+    .loader-heading {
+        font-size: 8vw;
+        top: 40%!important;
+        left: 30%!important;
+    }
+    .loader {
+        left: 35%!important;
+    }}
+@media (max-width:500px) {
+    .cart-item {
+        width: 95%!important;
+        margin: 10px 0px!important;
+    }
+    .container{
+        width: 95%!important;
+    }
+    .cart-item div{
+        flex-wrap: wrap;
+    }
 }
 
 .menu-btn:hover {

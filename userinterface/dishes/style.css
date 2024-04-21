@@ -377,6 +377,47 @@ header{
 
 }
 
+@media (max-width:500px) {
+    .dish-card{
+        width: 100%;
+
+    }
+    .container{
+        width: 100%;
+    
+    }
+
+    .dish-card img{
+        width: 100%;
+        /* height: 300px; */
+    
+    }
+}
+
+@media (max-width: 400px) {
+    .dish-btns{
+        
+        flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .dish-btns button{
+        width: 80%;
+        margin-top: 10px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .loader-heading {
+        font-size: 8vw;
+        top: 40%!important;
+        left: 30%!important;
+    }
+    .loader {
+        left: 35%!important;
+    }}
+
 .menu-btn {
     padding: 1rem 2rem;
     font-size: 1.2rem;
