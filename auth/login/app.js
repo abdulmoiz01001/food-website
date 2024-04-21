@@ -1,6 +1,8 @@
 let email = document.getElementById('email');
 let password = document.getElementById('password');
 let submitBtn = document.getElementById('btn');
+let toastMsg = document.getElementById('notification-toast-text');
+let notificationToast = document.getElementById('notification-toast');
 
 async function loginAccount(){
     // localStorage.setItem("add_to_card",[""])
@@ -37,21 +39,23 @@ async function loginAccount(){
    })
 
    .catch((error) => {
+    
+    submitBtn.disabled = false;
        console.log(error);
-       msg = error;
+       msg = "NO Access or Data found";
        loadToast(msg)
-       submitBtn.disabled = false;
+    //    submitBtn.disabled = false;
    });
 }
 
 function loadToast(msg){
     toastMsg.innerHTML = msg;
     // notificationToast.style.display = 'flex';
-    notificationToast.classList.add('notification-toast-active');
+    notificationToast.classList.add('show');
 
     setTimeout(()=>{
 
 // notificationToast.style.display = 'none';
-notificationToast.classList.remove('notification-toast-active');
-    },1000)
+notificationToast.classList.remove('show');
+    },2000)
 }

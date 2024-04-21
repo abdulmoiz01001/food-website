@@ -10,9 +10,16 @@ let login = document.getElementById('login-id');
 let logout = document.getElementById('logout-id');
 let signup = document.getElementById('signup-id');
 
+let loaderId = document.getElementById('loader-id');
+let loaderIds = document.getElementById('loader-ids');
+
 let orderDisplayList = document.getElementById('orders-cards-id');
 
-
+setTimeout(() => {
+    loaderId.style.display = 'none';
+    
+    loaderIds.style.display = 'none';
+}, 2060);
 function toggleNavbar() {
     navBar.classList.toggle('move-navbar');
 }
@@ -23,7 +30,7 @@ function closeNavbar() {
 var bodyOffsetWidth = document.body.offsetWidth;
 console.log("Offset width of body:", bodyOffsetWidth);
 function displayMenu() {
-    
+   
 var bodyOffsetWidth = document.body.offsetWidth;
     if (bodyOffsetWidth <= 800) {
         Menu.classList.add('visible');
@@ -102,8 +109,9 @@ function displayOrdersList(ordersList){
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${order.order.dishName}</h5>
-                    <p class="card-text">Quantity: ${order.orderedQuantity}</p>
+                    <p class="card-text">Quantity: ${order.orderedQuantity ? order.orderedQuantity : order.order.quantity }</p>
                     <p class="card-text">Total Price: Rs-${order.totalPrice}</p>
+                    <b>${order.orderDate} / <span>${order.orderTime}</span> </b>
                 </div>
             </div>
         `;

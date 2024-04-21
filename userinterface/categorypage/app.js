@@ -9,7 +9,7 @@ async function loadCategories(){
         let categories = snapshot.val();
         let categoryList = [];
         for(let category in categories){
-            categoryList.push({id: category, name: categories[category].categoryName, image: categories[category].categoryImage});
+            categoryList.push({id: category, name: categories[category].categoryName, description: categories[category].categoryDescription , image: categories[category].categoryImage});
         }
         displayCategories(categoryList);
     })
@@ -20,11 +20,15 @@ loadCategories();
 
 function displayCategories(categories){
    
+    console.log(categories);
     let categoryList = categories.map((category) => {
         return `
         <div id="${category.id}" onclick="navigateToDishes(this)" class="category-card">
         <img src="${category.image}" alt="...">
-        <p>${category.name}</p>
+        <div class="info">
+        <h1>${category.name}</h1>
+        <p>${category.description}</p>
+        </div>
     </div>
         `
     }

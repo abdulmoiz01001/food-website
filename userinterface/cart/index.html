@@ -8,7 +8,9 @@
 </head>
 <body>
     <!-- make a page for add to cart  -->
-
+    <div class="loader-page" ></div>
+    <h1 id="loader-ids"class="loader-heading">Add To Cart...</h1>
+    <span id="loader-id" class="loader"></span>
     <div class="cart-page">
         <header onchange="displayMenu()" >
             <div class="nav-bar" id="navbar-id">
@@ -35,6 +37,10 @@
                 </div>
             </div>
         </div>
+    </div>
+       <!-- notification toast -->
+       <div id="notification-toast" class="notification-toast">
+        <p id="notification-toast-text">add to cart</p>    
     </div>
 
 

@@ -5,6 +5,7 @@ let itemFormId = document.getElementById('item-form-id');
 let image = document.getElementById('image');
 let imageSrcId = document.getElementById('image-src');
 let itemName = document.getElementById('name');
+let itemDescription = document.getElementById('description');
 let itemFormHeading = document.getElementById('item-form-heading');
 let imageSrc = false;
 // edite check
@@ -24,6 +25,7 @@ let categoryRef = firebase.database().ref('categories');
 
 function addItemForm(){
     itemName.value = '';
+    itemDescription.value = '';
     imageSrc = false;
     editCheck = false;
     itemFormId.classList.add('toggle-item-form');
@@ -39,6 +41,7 @@ function closeForm(){
 
 
 async function logout(){
+    
      await firebase.auth().signOut();
     window.location.replace('/auth/login/index.html');
 }
@@ -78,18 +81,20 @@ function imageUpload(e) {
 }
 
 async function addItem(){
-
+    console.log(itemDescription.value);
+    console.log(itemName.value);
     if(editCheck==false){
         let itemImage = categoryImageUrl;
         let key = categoryRef.push().getKey();
     
-        if(itemName.value === '' || itemImage === ''){
+        if(itemName.value === '' || itemImage === '' || itemDescription.value === ''){
             alert('All fields are required');
             return;
         }
     
         let category = {
             categoryName: itemName.value,
+            categoryDescription: itemDescription.value,
             categoryImage: itemImage,
             categoryId: key
         }
@@ -100,6 +105,7 @@ async function addItem(){
             itemFormId.classList.remove('toggle-item-form');
             closeForm();
             document.getElementById('name').value = '';
+            document.getElementById('description').value = '';
             document.getElementById('image').value = '';
         })
         .catch(function(error){
@@ -109,6 +115,7 @@ async function addItem(){
     else{
         let updatedCategory = {
             categoryName: itemName.value,
+            itemDescription: itemDescription.value,
             categoryImage: categoryImageUrl
         }
 
@@ -117,6 +124,7 @@ async function addItem(){
             itemFormId.classList.remove('toggle-item-form');
             closeForm();
             document.getElementById('name').value = '';
+            document.getElementById('description').value = '';
             document.getElementById('image').value = '';
         })
         .catch(function(error){
@@ -142,7 +150,7 @@ function loadCategories(){
             console.log(categories);
             let categoryList = [];
             for(let category in categories){
-                categoryList.push({id: category, name: categories[category].categoryName, image: categories[category].categoryImage});
+                categoryList.push({id: category, description: categories[category].categoryDescription , name: categories[category].categoryName, image: categories[category].categoryImage});
             }
             console.log(categoryList);
             displayCategories(categoryList);
@@ -167,6 +175,7 @@ function displayCategories(categories){
             <div id="${category.id}" onclick="goToDishes(this)"  class="card-body">
             <h5 class="card-title
             ">${category.name}</h5>
+            <p>${category.description}</p>
             <div class="image">
             <img src="${category.image}" class="card-img-top" alt="...">
             </div>
@@ -224,6 +233,7 @@ async function editCategory(id){
         let category = snapshot.val();
         console.log(category);
         itemName.value = category.categoryName;
+        itemDescription.value = category.categoryDescription;
         if(imageSrc){
             imageSrcId.src = category.categoryImage;
         

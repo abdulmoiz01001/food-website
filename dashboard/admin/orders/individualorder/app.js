@@ -40,13 +40,15 @@ function displayOrder(order){
         <h4>Order Details</h4>
     </div>
     <div class="card-body">
-        <h5 class="card-title">Order Id: ${individualId}</h5>
-        <p class="card-text">User Id: ${individualUserId}</p>
-        <p class="card-text">Product Name: ${order.order.dishName}</p>
-        <p class="card-text">Product Category: ${order.order.categoryName}</p>
-        <p class="card-text">Quantity: ${order.orderedQuantity}</p>
-        <p class="card-text">Total Price: Rs-${order.totalPrice}</p>
-        <p class="card-text">Status: ${order.status}</p>
+    <p><strong>Order Id:</strong> ${individualId}</p>
+    <p><strong>User Id:</strong> ${individualUserId}</p>
+    <p><strong>Product Name:</strong> ${order.order.dishName}</p>
+    <p><strong>Product Category:</strong> ${order.order.categoryName}</p>
+    <p><strong>Quantity:</strong> ${order.orderedQuantity ? order.orderedQuantity : order.order.quantity}</p>
+    <p><strong>Total Price:</strong> Rs-${order.totalPrice}</p>
+    <p><strong>Status:</strong> ${order.status}</p>
+    <p><strong>Order Date:</strong> ${order.orderDate}</p>
+    <p><strong>Order Time:</strong> ${order.orderTime}</p>
         <div class="card-footer">
         <button onclick="acceptOrder()">Accept</button>
         <button onclick="rejectOrder()">Reject</button>

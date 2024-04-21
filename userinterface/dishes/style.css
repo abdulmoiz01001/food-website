@@ -4,6 +4,77 @@
     box-sizing: border-box;
 }
 
+.loader-heading{
+    display: flex;
+    justify-content: center;
+    font-size: 5rem;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    left: 45%;
+    color: #f4f4f4;
+    transition: all 0.3s ease;
+
+}
+.loader {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* padding-bottom: 300px; */
+    font-size: 3rem;
+    position:absolute;
+    top: 50%;
+    z-index: 1;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transition: all 0.3s ease;
+  }
+  
+  .loader:before , .loader:after{
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+  }
+  .loader:after {
+    box-shadow: 0 2px 0 #f4f4f4 inset;
+    animation: rotate 2s linear infinite;
+  }
+  
+  @keyframes rotate {
+    0% {  transform: rotate(0)}
+    100% { transform: rotate(360deg)}
+  }
+
+.loader-page{
+width: 100%;
+height: 100vh;
+z-index: 1;
+position: absolute;
+top: 0;
+background-color: #f1356d;
+/* transform: translateY(0%); */
+animation: animation 1s alternate 2s forwards  ;
+transition: all 0.3s ease;
+}
+
+@keyframes animation {
+    0%{
+        transform: translateY(0);
+    }
+  
+    100%{
+        transform: translateY(100%);
+        display: none;
+    }
+    
+}
+
+
 body{
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
@@ -13,6 +84,7 @@ body{
 header{
     width: 100%;
     min-height: 10vh;
+    z-index: 2;
     position: sticky;
     top: 0;
     display: flex;
@@ -93,6 +165,7 @@ header{
 }
 
 .dishes-cards{
+    /* border: 2px solid black; */
     margin-top: 50px;
     width: 100%;
     height: 100%;
@@ -104,19 +177,22 @@ header{
 }
 
 .dish-card{
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     justify-content: flex-start;
   cursor: pointer;
-    width: 300px;
-    height: 400px;
+  position: relative;
+  overflow: hidden;
+    width: 360px;
+    height: 500px;
     margin: 20px;
     border: 2px solid black;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    /* transition: all 0.3s ease; */
+    transition: all 0.3s ease;
 }
 
 /* .dish-card:hover{
@@ -127,11 +203,48 @@ header{
     transform: scale(1);
 } */
 
-.dish-card img{
+.info{
+    height: 70px;
+    /* width: 350px; */
     width: 100%;
-    height: 55%;
+    padding: 6px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -70px;  
+    background-color: #f1356d;
+    color: #fff;
+    /* border-radius: 0 0 10px 10px; */
+    transition: all 0.3s ease;
+
+}
+
+.dish-card:hover .info{
+    cursor: pointer;
+}   
+
+.dish-card:hover .info{
+    width: 101.5%!important;
+    height: 200px;
+    bottom: 0px;
+    background: black;
+}
+
+/* .dish-card:hover .info h2{
+    color: #f1356d;
+} */
+
+.dish-card:hover img{
+    transform: scale(1.1) rotate(360deg)!important;
+}
+
+
+.dish-card img{
+    width: 360px;
+    height: 500px;
+    border-radius: 3px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    transition: all 0.3s ease;
 }
 
 .dish-card h2{

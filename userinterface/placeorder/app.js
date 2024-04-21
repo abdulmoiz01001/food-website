@@ -22,9 +22,17 @@ let toastMsg = document.getElementById('notification-toast-text');
 
 let totalPrice = dishPrice * orderedQuantity;
 
+let loaderId = document.getElementById('loader-id');
+let loaderIds = document.getElementById('loader-ids');
+
 
 
 function loadDish(){
+    setTimeout(() => {
+        loaderId.style.display = 'none';
+        
+        loaderIds.style.display = 'none';
+    }, 2060);
     let dishRef = firebase.database().ref('dishes');
     dishRef.on('value', function(snapshot){
         let dishes = snapshot.val();

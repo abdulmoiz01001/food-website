@@ -70,7 +70,7 @@ function displayOrdersList(ordersList){
                 <p>${order.order.categoryName}</p>
             </div>
             <div class="order-card-body">
-                <p>Quantity: ${order.orderedQuantity}</p>
+                <p>Quantity: ${order.orderedQuantity != undefined ? order.orderedQuantity : order.order.quantity }</p>
                 <p>Total Price: ${order.totalPrice}</p>
                 <p>Status: ${order.status}</p>
             </div>

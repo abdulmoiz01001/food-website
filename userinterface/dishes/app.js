@@ -26,6 +26,9 @@ let login = document.getElementById('login-id');
 let logout = document.getElementById('logout-id');
 let signup = document.getElementById('signup-id');
 
+let loaderId = document.getElementById('loader-id');
+let loaderIds = document.getElementById('loader-ids');
+
 // Orders Reference 
 // let ordersRef = firebase.database().ref('orders');
 
@@ -53,7 +56,11 @@ var bodyOffsetWidth = document.body.offsetWidth;
     
 }
 
-
+setTimeout(() => {
+    loaderId.style.display = 'none';
+    
+    loaderIds.style.display = 'none';
+}, 2100);
 
 let mainData = [];
 
@@ -92,11 +99,14 @@ function displayDishes(dishes){
                  return `
             <div class="dish-card">
             <img src="${dish.image}" alt="...">
+            <div class="info" >
             <h2>${dish.name}</h2>
             <p>Rs-<span>${dish.price}</span></p>
             <div class="dish-btns" >
             <button id="${dish.id}" onclick="addToCart(this)">Add to Cart</button>
             <button id="${dish.id}" onclick="navigateToPlaceOrder(this)" >Order Now</button>
+            </div>
+    
             </div>
         </div>
             `

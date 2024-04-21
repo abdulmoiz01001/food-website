@@ -15,12 +15,22 @@ let dishQuantity = 1;
 let cartItem = JSON.parse(localStorage.getItem("add_to_card"));
 
 let totalPrice = document.getElementById('total-price');
+let username = localStorage.getItem('username');
 
 let totalCost = 0;
+let notificationToast = document.getElementById('notification-toast');
+
+// notificationToast.style.display = 'none';
+
+let toastMsg = document.getElementById('notification-toast-text');
 
 let login = document.getElementById('login-id');
 let logout = document.getElementById('logout-id');
 let signup = document.getElementById('signup-id');
+
+let loaderId = document.getElementById('loader-id');
+let loaderIds = document.getElementById('loader-ids');
+
 
 let orderKey = firebase.database().ref('allorders').push().getKey();
 console.log(currentUserId);
@@ -55,9 +65,16 @@ var bodyOffsetWidth = document.body.offsetWidth;
     }
     
 }
-
+setTimeout(() => {
+    loaderId.style.display = 'none';
+    
+    loaderIds.style.display = 'none';
+}, 2060);
 
 function displayDish() {
+    
+let cartItem = JSON.parse(localStorage.getItem("add_to_card"));
+    cartItems.innerHTML =``;
     // console.log(dishes);
     if(currentUserId == null){
         logout.style.display = "none";
@@ -72,7 +89,10 @@ function displayDish() {
     for (let index in cartItem) {
         cartItems.innerHTML +=`
         <div class="cart-item">
-                        <img src="${cartItem[index]["dishImage"]}" alt="...">
+        <div class="cart-img">
+        
+        <img src="${cartItem[index]["dishImage"]}" alt="...">
+        </div>
                         <div>
                             <h3>${cartItem[index]["dishName"]}</h3>
                             <p>Price: ${cartItem[index]["dishPrice"]}</p>
@@ -97,8 +117,8 @@ function removeItem(e){
     let index = e.id;
     cartItem.splice(index, 1);
     localStorage.setItem("add_to_card", JSON.stringify(cartItem));
-    window.location.reload();
-    // displayDish();
+    // window.location.reload();
+    displayDish();
 }
 
 function increaseQuantity(e){
@@ -174,39 +194,82 @@ function CalTotalPrice(){
 // create a order function which extract order from cart and then place it in the userorder collection in the database and then clear the cart and then redirect to the orders page.
 
 async function placeOrder(){
+    let count = 0;
     console.log(cartItem);
     let confirm = window.confirm("Are you sure you want to place this order?");
     //  exrtract order from cartItem and then place it in the userorder collection in the database and then clear the cart and then redirect to the orders page.
-
-
-    cartItem.forEach(async (item) => {
+     
+    await cartItem.forEach(async (item) => {
         let dishId = item.dishId;
         let dish = await firebase.database().ref('dishes').child(dishId).get();
         let dishData = dish.val();
+        if(dishData.dishTotalQuantity < item.quantity){
+            let msg = "Sorry! We do not have enough quantity of " + dishData.dishName;
+            confirm = false;
+            loadToast(msg)
+            return;
+        }
         let updatedQuantity = dishData.dishTotalQuantity - item.quantity;
         await firebase.database().ref('dishes').child(dishId).update({dishTotalQuantity: updatedQuantity});
     });
+   
     if(confirm){
-    cartItem.forEach(async (item) => {
+        
+    await cartItem.forEach(async (item) => {
+        
+     let orderKeyy = await firebase.database().ref('allorders').push().getKey();
+        console.log(item);
      let Cost = item.dishPrice * item.quantity;
+     ++count;
     
         let order = {
             userId: currentUserId,
-            orderId: orderKey,
+            orderId: orderKeyy,
             order: item,
             status: "pending",
             totalPrice:Cost,
             orderDate: new Date().toLocaleDateString(),
             orderTime: new Date().toLocaleTimeString(),
+            username: username,
         }
-        await  firebase.database().ref('userorders').child(currentUserId).child(orderKey).set(order);
-        await  firebase.database().ref('allorders').child(orderKey).set(order);
+        await  firebase.database().ref('userorders').child(currentUserId).child(orderKeyy).set(order);
+        console.log("1 done");
+        await firebase.database().ref( `allorders/${orderKeyy}`).set(order);
+        console.log("2 done");
+        
+        // alert("Order Placed Successfully" + count);
+       
     
-});}
-if(confirm){
+});
+
 localStorage.removeItem("add_to_card");
-window.location.href = "../orders/index.html";
+setTimeout(() => {
+    
+    window.location.href = "../orders/index.html";
+}, 500);
 }
+// if(confirm){
+
+// }
   
 }
 console.log(cartItem);
+
+function loadToast(msg){
+    toastMsg.innerHTML = msg;
+    // notificationToast.style.display = 'flex';
+    notificationToast.classList.add('notification-toast-active');
+
+    setTimeout(()=>{
+
+// notificationToast.style.display = 'none';
+notificationToast.classList.remove('notification-toast-active');
+    },2000)
+}
+
+async function logoutAccount(){
+    
+    localStorage.removeItem('current-userId');
+    await firebase.auth().signOut();
+   window.location.replace('/auth/login/index.html');
+}
