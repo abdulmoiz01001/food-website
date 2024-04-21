@@ -47,6 +47,12 @@ img {
     justify-content: center;
     align-items: center;
 }
+@media (max-width:850px) {
+    .signup-page{
+         flex-direction: column;
+    }
+}
+
 
 .container{
     width: 80%;

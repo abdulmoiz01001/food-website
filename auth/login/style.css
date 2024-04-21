@@ -17,6 +17,13 @@ body{
     height: 100vh;
 }
 
+@media (max-width: 850px){
+    .login-page{
+        flex-direction: column;
+    }
+    
+}
+
 img {
     animation: rotate infinite 2s alternate; /* Animation properties */
    
