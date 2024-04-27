@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Food Dishes</title>
+</head>
+<body>
+    <div class="loader-page" ></div>
+    <h1 id="loader-ids"class="loader-heading">Dishes...</h1>
+    <span id="loader-id" class="loader"></span>
+     <!-- create a page to show dishes cards  -->
+    <div class="dishes-page">
+        <header onchange="displayMenu()" >
+            <div class="nav-bar" id="navbar-id">
+                <a href="../index.html">Home</a>
+                <a href="../categorypage/index.html">Categories</a>
+                <a href="../cart/index.html">Cart</a>
+                <a href="../orders/index.html">Orders</a>
+                <a id="login-id" href="../../auth/login/index.html">Login</a>
+                <a id="signup-id" href="../auth/signup/index.html">Sign Up</a>
+                <a id="logout-id" onclick="logoutAccount()">logout</a>
+            </div>
+            <p id="menu-id" onclick="toggleNavbar()" class="hidden menu-btn" href="">Menu</p>
+   
+    </header>
+        <div class="container">
+            <div class="dishes-content">
+                <h1>Food Dishes</h1>
+                <div id="dishes-cards-id" class="dishes-cards">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- notification toast -->
+    <div id="notification-toast" class="notification-toast">
+        <p id="notification-toast-text">add to cart</p>    
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-storage-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNlR2fBWRAgXRvWnfkWTrO32JZKwDelXg",
+            authDomain: "food-web-444e7.firebaseapp.com",
+            databaseURL: "https://food-web-444e7-default-rtdb.firebaseio.com",
+            projectId: "food-web-444e7",
+            storageBucket: "food-web-444e7.appspot.com",
+            messagingSenderId: "924236535947",
+            appId: "1:924236535947:web:f4b1a886a00aa984315c8e",
+            measurementId: "G-7X68R2060G"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -161,7 +161,7 @@ function displayDishes(dishes){
     else {
      
         //  alert("alread added to cart")
-        let msg = 'already added to cart'
+        let msg = 'alread added to cart'
         loadToast(msg)
     }
         // window.location.href = "../cart/index.html";

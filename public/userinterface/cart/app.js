@@ -217,7 +217,7 @@ async function placeOrder(){
         
     await cartItem.forEach(async (item) => {
         
-     let orderKeyy = await firebase.database().ref('allorder    s').push().getKey();
+     let orderKeyy = await firebase.database().ref('allorders').push().getKey();
         console.log(item);
      let Cost = item.dishPrice * item.quantity;
      ++count;
@@ -246,7 +246,7 @@ localStorage.removeItem("add_to_card");
 setTimeout(() => {
     
     window.location.href = "../orders/index.html";
-}, 1500);
+}, 500);
 }
 // if(confirm){
 
